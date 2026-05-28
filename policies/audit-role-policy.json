@@ -1,0 +1,87 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "SecurityServicesReadOnly",
+      "Effect": "Allow",
+      "Action": [
+        "guardduty:Get*",
+        "guardduty:List*",
+
+        "securityhub:Get*",
+        "securityhub:List*",
+        "securityhub:Describe*",
+
+        "inspector2:Get*",
+        "inspector2:List*",
+        "inspector2:Describe*",
+
+        "access-analyzer:Get*",
+        "access-analyzer:List*",
+
+        "cloudtrail:Get*",
+        "cloudtrail:List*",
+        "cloudtrail:Describe*",
+        "cloudtrail:LookupEvents",
+
+        "config:Get*",
+        "config:List*",
+        "config:Describe*",
+        "config:BatchGet*",
+
+        "cloudwatch:Get*",
+        "cloudwatch:List*",
+        "cloudwatch:Describe*",
+
+        "logs:Get*",
+        "logs:Describe*",
+        "logs:Filter*",
+        "logs:StartQuery",
+        "logs:StopQuery",
+        "logs:GetQueryResults",
+
+        "iam:Get*",
+        "iam:List*",
+        "iam:GenerateCredentialReport",
+
+        "kms:Describe*",
+        "kms:Get*",
+        "kms:List*",
+
+        "s3:GetBucketPolicy",
+        "s3:GetBucketAcl",
+        "s3:GetEncryptionConfiguration",
+        "s3:ListAllMyBuckets",
+        "s3:GetBucketPublicAccessBlock",
+        "s3:GetBucketVersioning",
+        "s3:GetBucketLogging"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "DenyAllWrites",
+      "Effect": "Deny",
+      "Action": [
+        "iam:Create*",
+        "iam:Delete*",
+        "iam:Put*",
+        "iam:Update*",
+        "iam:Attach*",
+        "iam:Detach*",
+
+        "s3:Put*",
+        "s3:Delete*",
+
+        "ec2:Create*",
+        "ec2:Delete*",
+        "ec2:Modify*",
+
+        "kms:Create*",
+        "kms:Delete*",
+        "kms:Disable*",
+        "kms:Schedule*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

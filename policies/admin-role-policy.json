@@ -1,0 +1,67 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "SecurityServicesFullAccess",
+      "Effect": "Allow",
+      "Action": [
+        "guardduty:*",
+        "securityhub:*",
+        "inspector2:*",
+        "access-analyzer:*",
+        "cloudtrail:*",
+        "config:*",
+        "cloudwatch:*",
+        "logs:*",
+        "kms:List*",
+        "kms:Describe*",
+        "kms:Get*",
+        "securityhub:BatchUpdateFindings"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "IAMReadAndPasswordPolicy",
+      "Effect": "Allow",
+      "Action": [
+        "iam:Get*",
+        "iam:List*",
+        "iam:GenerateCredentialReport",
+        "iam:GenerateServiceLastAccessedDetails",
+        "iam:UpdateAccountPasswordPolicy"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "S3LogReadAccess",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket",
+        "s3:GetBucketPolicy",
+        "s3:GetBucketAcl",
+        "s3:GetEncryptionConfiguration"
+      ],
+      "Resource": [
+        "arn:aws:s3:::baseline-security-logs-*",
+        "arn:aws:s3:::baseline-security-logs-*/*"
+      ]
+    },
+    {
+      "Sid": "DenyDestructiveActions",
+      "Effect": "Deny",
+      "Action": [
+        "cloudtrail:StopLogging",
+        "cloudtrail:DeleteTrail",
+        "guardduty:DeleteDetector",
+        "securityhub:DisableSecurityHub",
+        "config:DeleteConfigurationRecorder",
+        "config:StopConfigurationRecorder",
+        "kms:ScheduleKeyDeletion",
+        "kms:DeleteImportedKeyMaterial",
+        "s3:DeleteBucket"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

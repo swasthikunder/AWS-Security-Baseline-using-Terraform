@@ -1,0 +1,79 @@
+# ============================================================
+# Copy this file to terraform.tfvars and fill in your values
+# ============================================================
+
+aws_region  = "us-east-1"
+environment = "lab"
+
+# ============================================================
+# REQUIRED VALUES
+# ============================================================
+
+owner_email = "your-email@example.com"
+alert_email = "your-email@example.com"
+
+# ============================================================
+# IAM Role Names
+# ============================================================
+
+admin_role_name      = "SecurityAdministrator"
+audit_role_name      = "SecurityAuditor"
+breakglass_role_name = "BreakGlassAdmin"
+
+# ============================================================
+# Cross-Account Access
+# Leave empty to use current AWS account
+# ============================================================
+
+trusted_account_id = ""
+
+# ============================================================
+# VPC Configuration
+# ============================================================
+
+vpc_cidr             = "10.0.0.0/16"
+
+public_subnet_cidrs = [
+  "10.0.1.0/24",
+  "10.0.2.0/24"
+]
+
+private_subnet_cidrs = [
+  "10.0.10.0/24",
+  "10.0.11.0/24"
+]
+
+availability_zones = [
+  "us-east-1a",
+  "us-east-1b"
+]
+
+# ============================================================
+# Cost Governance
+# ============================================================
+
+monthly_budget_limit   = "5"
+budget_alert_threshold = 80
+
+# ============================================================
+# CloudTrail
+# ============================================================
+
+cloudtrail_name    = "BaselineSecurityTrail"
+
+log_retention_days = 30
+
+s3_log_prefix = "cloudtrail-logs"
+
+# ============================================================
+# OPTIONAL MODULES
+# Currently disabled in root main.tf for ₹0-safe deployment
+# ============================================================
+
+# GuardDuty
+# Options:
+# FIFTEEN_MINUTES
+# ONE_HOUR
+# SIX_HOURS
+
+# guardduty_finding_frequency = "SIX_HOURS"
